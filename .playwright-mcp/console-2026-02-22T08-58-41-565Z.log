@@ -1,0 +1,401 @@
+[     731ms] [WARNING] Image with src "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[     731ms] [WARNING] Image with src "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[     733ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[     734ms] [WARNING] Image with src "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[     735ms] [WARNING] Image with src "https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[     736ms] [WARNING] Image with src "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[     736ms] [WARNING] Image with src "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   37811ms] [WARNING] Image with src "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   37812ms] [WARNING] Image with src "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   37814ms] [WARNING] Image with src "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   37814ms] [WARNING] Image with src "https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   37816ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   37817ms] [WARNING] Image with src "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   37818ms] [WARNING] Image with src "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42576ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/tienda" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/tienda" tree={[...]} params={{}} cacheNode={{...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="/Documents...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <PublicLayout>
+                  <PublicLayout>
+                    <Navbar>
+                      <header className="fixed top-...">
+                        <nav className="max-w-7xl ...">
+                          <LinkComponent>
+                          <ul>
+                          <div className="flex items...">
+                            <button>
+                            <button onClick={function toggleCart} className="relative p..." aria-label="Carrito">
+                              <ShoppingCart>
++                             <span
++                               className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-..."
++                               style={{background:"var(--accent)"}}
++                             >
+                            ...
+                  ...
+            ...
+
+    at throwOnHydrationMismatch (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:3348:56)
+    at beginWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:965:74)
+    at performUnitOfWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_3624ef7c._.js:2647:64)
+[   42555ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42926ms] [WARNING] Image with src "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42926ms] [WARNING] Image with src "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42926ms] [WARNING] Image with src "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42926ms] [WARNING] Image with src "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42926ms] [WARNING] Image with src "https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42926ms] [WARNING] Image with src "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   42954ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   65264ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   65265ms] [WARNING] Image with src "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   65266ms] [WARNING] Image with src "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   65267ms] [WARNING] Image with src "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   65268ms] [WARNING] Image with src "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   65269ms] [WARNING] Image with src "https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   65269ms] [WARNING] Image with src "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   69797ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/tienda" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/tienda" tree={[...]} params={{}} cacheNode={{...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="/Documents...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <PublicLayout>
+                  <PublicLayout>
+                    <Navbar>
+                      <header className="fixed top-...">
+                        <nav className="max-w-7xl ...">
+                          <LinkComponent>
+                          <ul>
+                          <div className="flex items...">
+                            <button>
+                            <button onClick={function toggleCart} className="relative p..." aria-label="Carrito">
+                              <ShoppingCart>
++                             <span
++                               className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-..."
++                               style={{background:"var(--accent)"}}
++                             >
+                            ...
+                  ...
+            ...
+
+    at throwOnHydrationMismatch (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:3348:56)
+    at beginWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:965:74)
+    at performUnitOfWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_3624ef7c._.js:2647:64)
+[   69760ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   70094ms] [WARNING] Image with src "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   70094ms] [WARNING] Image with src "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   70097ms] [WARNING] Image with src "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   70097ms] [WARNING] Image with src "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   70097ms] [WARNING] Image with src "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   70097ms] [WARNING] Image with src "https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[   70124ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[  110282ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/carrito" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/carrito" tree={[...]} params={{}} cacheNode={{...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="/Documents...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <UsuarioLayout>
+                  <UsuarioLayout>
+                    <Navbar>
+                      <header className="fixed top-...">
+                        <nav className="max-w-7xl ...">
+                          <LinkComponent>
+                          <ul>
+                          <div className="flex items...">
+                            <button>
+                            <button onClick={function toggleCart} className="relative p..." aria-label="Carrito">
+                              <ShoppingCart>
++                             <span
++                               className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-..."
++                               style={{background:"var(--accent)"}}
++                             >
+                            ...
+                  ...
+            ...
+
+    at throwOnHydrationMismatch (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:3348:56)
+    at beginWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:965:74)
+    at performUnitOfWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_3624ef7c._.js:2647:64)
+[  110249ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[  112737ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/checkout" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/checkout" tree={[...]} params={{}} cacheNode={{...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="/Documents...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <UsuarioLayout>
+                  <UsuarioLayout>
+                    <Navbar>
+                      <header className="fixed top-...">
+                        <nav className="max-w-7xl ...">
+                          <LinkComponent>
+                          <ul>
+                          <div className="flex items...">
+                            <button>
+                            <button onClick={function toggleCart} className="relative p..." aria-label="Carrito">
+                              <ShoppingCart>
++                             <span
++                               className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-..."
++                               style={{background:"var(--accent)"}}
++                             >
+                            ...
+                  ...
+            ...
+
+    at throwOnHydrationMismatch (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:3348:56)
+    at beginWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:965:74)
+    at performUnitOfWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_3624ef7c._.js:2647:64)
+[  112710ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[  114542ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/servicios" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/servicios" tree={[...]} params={{}} cacheNode={{...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="/Documents...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <PublicLayout>
+                  <PublicLayout>
+                    <Navbar>
+                      <header className="fixed top-...">
+                        <nav className="max-w-7xl ...">
+                          <LinkComponent>
+                          <ul>
+                          <div className="flex items...">
+                            <button>
+                            <button onClick={function toggleCart} className="relative p..." aria-label="Carrito">
+                              <ShoppingCart>
++                             <span
++                               className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-..."
++                               style={{background:"var(--accent)"}}
++                             >
+                            ...
+                  ...
+            ...
+
+    at throwOnHydrationMismatch (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:3348:56)
+    at beginWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:965:74)
+    at performUnitOfWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_3624ef7c._.js:2647:64)
+[  114512ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[  116350ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/nosotros" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/nosotros" tree={[...]} params={{}} cacheNode={{...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="/Documents...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <PublicLayout>
+                  <PublicLayout>
+                    <Navbar>
+                      <header className="fixed top-...">
+                        <nav className="max-w-7xl ...">
+                          <LinkComponent>
+                          <ul>
+                          <div className="flex items...">
+                            <button>
+                            <button onClick={function toggleCart} className="relative p..." aria-label="Carrito">
+                              <ShoppingCart>
++                             <span
++                               className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-..."
++                               style={{background:"var(--accent)"}}
++                             >
+                            ...
+                  ...
+            ...
+
+    at throwOnHydrationMismatch (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:3348:56)
+    at beginWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:965:74)
+    at performUnitOfWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_3624ef7c._.js:2647:64)
+[  116320ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
+[  117669ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/contacto" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/contacto" tree={[...]} params={{}} cacheNode={{...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="/Documents...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <PublicLayout>
+                  <PublicLayout>
+                    <Navbar>
+                      <header className="fixed top-...">
+                        <nav className="max-w-7xl ...">
+                          <LinkComponent>
+                          <ul>
+                          <div className="flex items...">
+                            <button>
+                            <button onClick={function toggleCart} className="relative p..." aria-label="Carrito">
+                              <ShoppingCart>
++                             <span
++                               className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-..."
++                               style={{background:"var(--accent)"}}
++                             >
+                            ...
+                  ...
+            ...
+
+    at throwOnHydrationMismatch (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:3348:56)
+    at beginWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:965:74)
+    at performUnitOfWork (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_react-dom_4d6b9b9f._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3002/_next/static/chunks/ace37_next_dist_compiled_3624ef7c._.js:2647:64)
+[  117641ms] [WARNING] Image with src "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3002/_next/static/chunks/ace37_next_dist_c2020781._.js:2297
