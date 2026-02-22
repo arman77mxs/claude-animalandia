@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useCart } from '@/context/CartContext'
 import { ShoppingCart, Menu, X, Sun, Moon, PawPrint } from 'lucide-react'
@@ -15,12 +16,18 @@ const NAV_LINKS = [
   { href: '/contacto', label: 'Contacto' },
 ]
 
+const INNER_PAGES = ['/tienda', '/servicios', '/nosotros', '/contacto']
+
 export default function Navbar() {
+  const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const { totalItems, toggleCart } = useCart()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [user, setUser] = useState<{ email?: string } | null>(null)
+
+  const isInnerPage = pathname ? INNER_PAGES.some(p => pathname === p || pathname.startsWith(p + '/')) : false
+  const showSolidBg = scrolled || isInnerPage
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -36,9 +43,9 @@ export default function Navbar() {
   return (
     <header className={cn(
       'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      scrolled ? 'bg-[var(--background)]/95 backdrop-blur-md shadow-md' : 'bg-transparent'
+      showSolidBg ? 'bg-[var(--background)]/98 backdrop-blur-md shadow-sm border-b border-[var(--border)]' : 'bg-transparent'
     )}>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[4.5rem] flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-xl">
           <PawPrint className="w-7 h-7" style={{ color: 'var(--primary)' }} />

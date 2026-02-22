@@ -49,7 +49,7 @@ export default function TiendaPage() {
   const CATS: [Categoria, string, string][] = [['todos','Todos','🐾'],['perro','Perros','🐕'],['gato','Gatos','🐱'],['roedor','Roedores','🐹']]
 
   return (
-    <div className="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-8 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="mb-10">
         <h1 className="text-4xl font-black mb-2">Nuestra <span style={{ color: 'var(--primary)' }}>Tienda</span></h1>
         <p style={{ color: 'var(--muted-foreground)' }}>Productos premium para todas las mascotas</p>

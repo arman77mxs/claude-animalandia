@@ -29,7 +29,7 @@ export default function ServiciosPage() {
   }, [])
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       {/* Hero */}
       <div className="text-center py-16 px-4" style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), color-mix(in srgb, var(--secondary) 10%, transparent))' }}>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

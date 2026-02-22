@@ -5,7 +5,7 @@ import { ArrowRight, Star } from 'lucide-react'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10" style={{
         background: 'linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, transparent) 0%, color-mix(in srgb, var(--secondary) 10%, transparent) 50%, color-mix(in srgb, var(--accent) 8%, transparent) 100%)'

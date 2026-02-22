@@ -7,7 +7,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
     <>
       <Navbar />
       <CartDrawer />
-      <main>{children}</main>
+      <main style={{ paddingTop: '73px' }} className="min-h-screen">{children}</main>
       <Footer />
     </>
   )

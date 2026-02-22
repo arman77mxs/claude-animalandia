@@ -4,8 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:3000": "next dev -p 3000",
+    "dev:3001": "next dev -p 3001",
+    "dev:3002": "next dev -p 3002",
+    "dev:3003": "next dev -p 3003",
     "build": "next build",
     "start": "next start",
+    "start:3000": "next start -p 3000",
+    "start:3001": "next start -p 3001",
+    "start:3002": "next start -p 3002",
+    "start:3003": "next start -p 3003",
+    "kill:ports": "for p in 3000 3001 3002 3003; do lsof -ti :$p | xargs kill -9 2>/dev/null; done; echo 'Puertos 3000-3003 liberados'",
+    "kill:3000": "lsof -ti :3000 | xargs kill -9 2>/dev/null || true",
+    "kill:3001": "lsof -ti :3001 | xargs kill -9 2>/dev/null || true",
+    "kill:3002": "lsof -ti :3002 | xargs kill -9 2>/dev/null || true",
+    "kill:3003": "lsof -ti :3003 | xargs kill -9 2>/dev/null || true",
     "lint": "eslint"
   },
   "dependencies": {

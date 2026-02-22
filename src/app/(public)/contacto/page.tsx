@@ -18,7 +18,7 @@ export default function ContactoPage() {
   }
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       <div className="text-center py-16 px-4" style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--secondary) 10%, transparent), color-mix(in srgb, var(--accent) 8%, transparent))' }}>
         <h1 className="text-5xl font-black mb-4">Contáctanos</h1>
         <p className="text-lg" style={{ color: 'var(--muted-foreground)' }}>Estamos aquí para ayudarte y a tu mascota</p>

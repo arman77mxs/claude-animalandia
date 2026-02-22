@@ -4,7 +4,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="flex min-h-screen">
       <AdminSidebar />
-      <main className="flex-1 ml-64 p-8 overflow-auto">{children}</main>
+      <main style={{ marginLeft: '256px', padding: '2rem', minHeight: '100vh', overflowX: 'auto' }} className="flex-1">{children}</main>
     </div>
   )
 }

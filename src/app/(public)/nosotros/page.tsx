@@ -9,7 +9,7 @@ const TEAM = [
 
 export default function NosotrosPage() {
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       {/* Hero */}
       <div className="text-center py-16 px-4" style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), color-mix(in srgb, var(--accent) 8%, transparent))' }}>
         <h1 className="text-5xl font-black mb-4">Sobre <span style={{ color: 'var(--primary)' }}>AnimaLandia</span></h1>
