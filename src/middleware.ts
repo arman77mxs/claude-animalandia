@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
 
   const path = request.nextUrl.pathname
 
-  // Protect /perfil, /carrito, /pedidos, /agendar
+  // Protect /perfil, /pedidos, /agendar
   const userProtectedPaths = ['/perfil', '/pedidos', '/agendar']
   if (userProtectedPaths.some(p => path.startsWith(p))) {
     if (!user) {
@@ -35,20 +35,10 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Protect /admin routes
+  // Protect /admin routes — just check auth here, role checked in admin layout
   if (path.startsWith('/admin') && path !== '/admin/login') {
     if (!user) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
-    }
-    // Check admin role
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('rol')
-      .eq('id', user.id)
-      .single()
-
-    if (!profile || profile.rol !== 'admin') {
-      return NextResponse.redirect(new URL('/', request.url))
     }
   }
 
