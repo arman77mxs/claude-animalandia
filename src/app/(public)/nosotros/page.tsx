@@ -1,10 +1,10 @@
 import { Heart, Award, PawPrint, MapPin } from 'lucide-react'
 
 const TEAM = [
-  { name: 'Dr. Alejandro Martínez', role: 'Director Médico Veterinario', esp: 'Cirugía y Medicina Interna', years: 12, img: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=300' },
-  { name: 'Dra. Sofía Ramírez', role: 'Veterinaria Especialista', esp: 'Dermatología y Nutrición', years: 8, img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300' },
-  { name: 'Dr. Carlos Herrera', role: 'Veterinario de Guardia', esp: 'Urgencias y Vacunación', years: 5, img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300' },
-  { name: 'Fernanda López', role: 'Estilista Canina & Felina', esp: 'Grooming Especializado', years: 7, img: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=300' },
+  { name: 'Dr. Alejandro Martínez', role: 'Director Médico Veterinario', esp: 'Cirugía y Medicina Interna', years: 12, img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80' },
+  { name: 'Dra. Sofía Ramírez', role: 'Veterinaria Especialista', esp: 'Dermatología y Nutrición', years: 8, img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80' },
+  { name: 'Dr. Carlos Herrera', role: 'Veterinario de Guardia', esp: 'Urgencias y Vacunación', years: 5, img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80' },
+  { name: 'Fernanda López', role: 'Estilista Canina & Felina', esp: 'Grooming Especializado', years: 7, img: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=400&q=80' },
 ]
 
 export default function NosotrosPage() {
@@ -34,7 +34,7 @@ export default function NosotrosPage() {
             </p>
           </div>
           <div className="rounded-3xl overflow-hidden h-80">
-            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600" alt="AnimaLandia CDMX" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&q=80" alt="AnimaLandia CDMX" className="w-full h-full object-cover" />
           </div>
         </div>
 

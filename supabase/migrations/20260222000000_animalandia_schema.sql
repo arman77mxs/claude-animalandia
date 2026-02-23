@@ -206,29 +206,29 @@ on conflict do nothing;
 
 -- Productos para Perros
 insert into productos (titulo, descripcion, imagen_url, precio_mxn, descuento_pct, stock, activo, para_perro, para_gato, para_roedor, mas_vendido) values
-  ('Alimento Premium Royal Canin Adulto 15kg', 'Fórmula premium para perros adultos con proteínas de alta calidad, omega 3 y 6 para pelaje brillante.', 'https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400', 1290, 10, 45, true, true, false, false, true),
-  ('Collar GPS Antiparasitario Premium', 'Collar con tecnología GPS integrada y repelente natural de pulgas y garrapatas. Resistente al agua.', 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400', 890, 0, 28, true, true, false, false, false),
-  ('Juguete Interactivo Kong Classic L', 'Juguete de caucho natural resistente, ideal para llenar con premios. Estimula la mente de tu perro.', 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400', 320, 15, 60, true, true, false, false, false),
-  ('Cama Ortopédica Memory Foam Grande', 'Cama con espuma viscoelástica médica para perros grandes. Forro lavable antimicrobial.', 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400', 1850, 20, 15, true, true, false, false, true),
-  ('Champú Medicado Veterinario 500ml', 'Champú dermatológico con clorhexidina al 4% para tratamiento de dermatitis y problemas de piel.', 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400', 280, 0, 80, true, true, false, false, false)
+  ('Alimento Premium Royal Canin Adulto 15kg', 'Fórmula premium para perros adultos con proteínas de alta calidad, omega 3 y 6 para pelaje brillante.', 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80', 1290, 10, 45, true, true, false, false, true),
+  ('Collar GPS Antiparasitario Premium', 'Collar con tecnología GPS integrada y repelente natural de pulgas y garrapatas. Resistente al agua.', 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&q=80', 890, 0, 28, true, true, false, false, false),
+  ('Juguete Interactivo Kong Classic L', 'Juguete de caucho natural resistente, ideal para llenar con premios. Estimula la mente de tu perro.', 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&q=80', 320, 15, 60, true, true, false, false, false),
+  ('Cama Ortopédica Memory Foam Grande', 'Cama con espuma viscoelástica médica para perros grandes. Forro lavable antimicrobial.', 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80', 1850, 20, 15, true, true, false, false, true),
+  ('Champú Medicado Veterinario 500ml', 'Champú dermatológico con clorhexidina al 4% para tratamiento de dermatitis y problemas de piel.', 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&q=80', 280, 0, 80, true, true, false, false, false);
 on conflict do nothing;
 
 -- Productos para Gatos
 insert into productos (titulo, descripcion, imagen_url, precio_mxn, descuento_pct, stock, activo, para_perro, para_gato, para_roedor, mas_vendido) values
-  ('Alimento Whiskas Adulto Salmón 3kg', 'Croquetas con sabor a salmón enriquecidas con taurina, omega 3 y vitaminas esenciales para gatos adultos.', 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400', 380, 5, 90, true, false, true, false, true),
-  ('Rascador Torre Premium 150cm', 'Torre rascador de 5 niveles con tapizado de felpa, hamaca, cueva y juguetes colgantes. Máximo diversión.', 'https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400', 1650, 0, 12, true, false, true, false, false),
-  ('Arena Sanitaria Aglutinante 10kg', 'Arena de sílica premium con control de olores por 30 días, forma grumos sólidos y fácil limpieza.', 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400', 420, 0, 200, true, false, true, false, false),
-  ('Cepillo Furminator Anti-Enredos', 'Cepillo profesional que elimina hasta el 90% del pelo suelto, reduciendo la formación de bolas de pelo.', 'https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400', 560, 10, 35, true, false, true, false, false),
-  ('Comedero Automático WiFi 5L', 'Dispensador automático con control por app, 5 porciones programables y cámara HD integrada.', 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400', 2100, 15, 8, true, false, true, false, true)
+  ('Alimento Whiskas Adulto Salmón 3kg', 'Croquetas con sabor a salmón enriquecidas con taurina, omega 3 y vitaminas esenciales para gatos adultos.', 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80', 380, 5, 90, true, false, true, false, true),
+  ('Rascador Torre Premium 150cm', 'Torre rascador de 5 niveles con tapizado de felpa, hamaca, cueva y juguetes colgantes. Máximo diversión.', 'https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=600&q=80', 1650, 0, 12, true, false, true, false, false),
+  ('Arena Sanitaria Aglutinante 10kg', 'Arena de sílica premium con control de olores por 30 días, forma grumos sólidos y fácil limpieza.', 'https://images.unsplash.com/photo-1548546738-8509cb246ed3?w=600&q=80', 420, 0, 200, true, false, true, false, false),
+  ('Cepillo Furminator Anti-Enredos', 'Cepillo profesional que elimina hasta el 90% del pelo suelto, reduciendo la formación de bolas de pelo.', 'https://images.unsplash.com/photo-1591768793355-74d04bb66ea4?w=600&q=80', 560, 10, 35, true, false, true, false, false),
+  ('Comedero Automático WiFi 5L', 'Dispensador automático con control por app, 5 porciones programables y cámara HD integrada.', 'https://images.unsplash.com/photo-1551730459-92db2a308d6a?w=600&q=80', 2100, 15, 8, true, false, true, false, true);
 on conflict do nothing;
 
 -- Productos para Roedores
 insert into productos (titulo, descripcion, imagen_url, precio_mxn, descuento_pct, stock, activo, para_perro, para_gato, para_roedor, mas_vendido) values
-  ('Jaula Hámster Maxi Adventure 60cm', 'Jaula de doble nivel con túneles, rueda silenciosa XXL, comedero y bebedero automático incluidos.', 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400', 890, 0, 20, true, false, false, true, false),
-  ('Mezcla Premium Semillas Roedores 1kg', 'Mix de semillas, granos, frutos secos y verduras deshidratadas. Sin colorantes ni conservantes artificiales.', 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400', 180, 0, 150, true, false, false, true, false),
-  ('Rueda Silenciosa Rodamiento 28cm', 'Rueda de ejercicio con tecnología de rodamiento silencioso, superficie antideslizante. Ideal para hámsters y ratas.', 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400', 320, 5, 45, true, false, false, true, false),
-  ('Cama Viruta Abeto Natural 5L', 'Sustrato natural de abeto sin químicos, ultra absorbente, controla olores y es completamente biodegradable.', 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400', 120, 0, 200, true, false, false, true, false),
-  ('Juguetes Masticables Set x8', 'Set de 8 juguetes de madera natural: tubos, arcos, escalera y bloques. Mantienen los dientes sanos.', 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=400', 250, 20, 60, true, false, false, true, true)
+  ('Jaula Hámster Maxi Adventure 60cm', 'Jaula de doble nivel con túneles, rueda silenciosa XXL, comedero y bebedero automático incluidos.', 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&q=80', 890, 0, 20, true, false, false, true, false),
+  ('Mezcla Premium Semillas Roedores 1kg', 'Mix de semillas, granos, frutos secos y verduras deshidratadas. Sin colorantes ni conservantes artificiales.', 'https://images.unsplash.com/photo-1621258674395-9f5b049d5c58?w=600&q=80', 180, 0, 150, true, false, false, true, false),
+  ('Rueda Silenciosa Rodamiento 28cm', 'Rueda de ejercicio con tecnología de rodamiento silencioso, superficie antideslizante. Ideal para hámsters y ratas.', 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&q=80', 320, 5, 45, true, false, false, true, false),
+  ('Cama Viruta Abeto Natural 5L', 'Sustrato natural de abeto sin químicos, ultra absorbente, controla olores y es completamente biodegradable.', 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&q=80', 120, 0, 200, true, false, false, true, false),
+  ('Juguetes Masticables Set x8', 'Set de 8 juguetes de madera natural: tubos, arcos, escalera y bloques. Mantienen los dientes sanos.', 'https://images.unsplash.com/photo-1621258674395-9f5b049d5c58?w=600&q=80', 250, 20, 60, true, false, false, true, true);
 on conflict do nothing;
 
 -- Testimonios

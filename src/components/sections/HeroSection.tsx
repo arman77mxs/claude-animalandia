@@ -65,7 +65,7 @@ export default function HeroSection() {
           <div className="relative w-80 h-80 rounded-full overflow-hidden"
             style={{ background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)' }}>
             <img
-              src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600"
+              src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&q=80"
               alt="Mascotas felices"
               className="w-full h-full object-cover mix-blend-overlay"
             />

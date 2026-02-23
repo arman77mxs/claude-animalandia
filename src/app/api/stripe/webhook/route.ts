@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { stripe } from '@/lib/stripe/client'
+import { stripe } from '@/lib/stripe/server'
 import { createClient } from '@supabase/supabase-js'
 
 // Usar service role para actualizar órdenes desde webhook
