@@ -7,7 +7,7 @@ export default function UsuarioLayout({ children }: { children: React.ReactNode 
     <>
       <Navbar />
       <CartDrawer />
-      <main className="min-h-screen">{children}</main>
+      <main className="pt-[73px] min-h-screen">{children}</main>
       <Footer />
     </>
   )

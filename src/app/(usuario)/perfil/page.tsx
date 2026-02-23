@@ -46,13 +46,13 @@ export default function PerfilPage() {
   }
 
   if (loading) return (
-    <div className="pt-24 min-h-screen flex items-center justify-center">
+    <div className="pt-8 min-h-screen flex items-center justify-center">
       <div className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: 'var(--primary)' }} />
     </div>
   )
 
   return (
-    <div className="pt-24 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-8 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">

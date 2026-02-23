@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { Producto } from '@/types'
 import { X } from 'lucide-react'
 import { toast } from '@/components/ui/toaster'
+import { createProducto, updateProducto } from '@/app/(admin)/admin/productos/actions'
 
 interface Props {
   producto: Producto | null
@@ -28,30 +28,33 @@ export default function ProductoModal({ producto, onClose, onSave }: Props) {
   const [loading, setLoading] = useState(false)
 
   const handleSave = async () => {
-    if (!form.titulo || !form.precio_mxn) return
+    if (!form.titulo?.trim() || !form.precio_mxn) {
+      toast('Título y precio son obligatorios', 'error')
+      return
+    }
     setLoading(true)
-    const supabase = createClient()
     const data = {
-      titulo: form.titulo,
-      descripcion: form.descripcion,
-      imagen_url: form.imagen_url,
+      titulo: form.titulo.trim(),
+      descripcion: form.descripcion || '',
+      imagen_url: form.imagen_url || '',
       precio_mxn: parseFloat(form.precio_mxn),
-      descuento_pct: parseInt(form.descuento_pct),
-      stock: parseInt(form.stock),
+      descuento_pct: parseInt(form.descuento_pct, 10) || 0,
+      stock: parseInt(form.stock, 10) || 0,
       activo: form.activo,
       para_perro: form.para_perro,
       para_gato: form.para_gato,
       para_roedor: form.para_roedor,
       mas_vendido: form.mas_vendido,
     }
-    if (producto?.id) {
-      await supabase.from('productos').update(data).eq('id', producto.id)
-      toast('Producto actualizado', 'success')
-    } else {
-      await supabase.from('productos').insert(data)
-      toast('Producto creado', 'success')
-    }
+    const result = producto?.id
+      ? await updateProducto(producto.id, data)
+      : await createProducto(data)
     setLoading(false)
+    if (result.error) {
+      toast(result.error, 'error')
+      return
+    }
+    toast(producto?.id ? 'Producto actualizado' : 'Producto creado', 'success')
     onSave()
   }
 

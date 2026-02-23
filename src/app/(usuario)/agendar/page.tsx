@@ -59,7 +59,7 @@ export default function AgendarPage() {
   }
 
   return (
-    <div className="pt-24 pb-20 max-w-2xl mx-auto px-4">
+    <div className="pt-8 pb-20 max-w-2xl mx-auto px-4">
       <h1 className="text-3xl font-black mb-2">Agendar <span style={{ color: 'var(--secondary)' }}>Cita</span></h1>
       <p className="mb-8 text-sm" style={{ color: 'var(--muted-foreground)' }}>Selecciona servicio, fecha y hora disponible</p>
 

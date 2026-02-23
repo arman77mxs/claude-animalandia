@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useReducer, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useReducer, useEffect, useState, ReactNode } from 'react'
 import { CartItem, Producto } from '@/types'
 
 interface CartState {
@@ -60,6 +60,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 interface CartContextType {
   state: CartState
+  cartLoaded: boolean
   addItem: (producto: Producto) => void
   removeItem: (productoId: string) => void
   updateQuantity: (productoId: string, cantidad: number) => void
@@ -75,6 +76,7 @@ const CartContext = createContext<CartContextType | null>(null)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], isOpen: false })
+  const [cartLoaded, setCartLoaded] = useState(false)
 
   // Load from localStorage after mount (avoids hydration mismatch)
   useEffect(() => {
@@ -91,6 +93,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
       } catch { /* ignore parse errors */ }
     }
+    setCartLoaded(true)
   }, [])
 
   useEffect(() => {
@@ -109,6 +112,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     <CartContext.Provider
       value={{
         state,
+        cartLoaded,
         addItem: (producto) => dispatch({ type: 'ADD_ITEM', producto }),
         removeItem: (productoId) => dispatch({ type: 'REMOVE_ITEM', productoId }),
         updateQuantity: (productoId, cantidad) => dispatch({ type: 'UPDATE_QUANTITY', productoId, cantidad }),

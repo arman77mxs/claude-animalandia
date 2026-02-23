@@ -18,9 +18,14 @@ AGENT_PID=$!
 ### 🤖 ATLAS — Base de Datos
 1. Conectar con Supabase MCP
 2. Crear todas las tablas del schema definido en CLAUDE.md
-3. Configurar RLS policies para cada tabla
-4. Crear seed data de prueba (5 productos por categoría, 3 servicios, 5 testimonios)
-5. Exportar tipos TypeScript desde el schema
+3. **⚠️ CRÍTICO — tabla profiles:**
+   - `id UUID PRIMARY KEY REFERENCES auth.users(id)` — el `id` ES el UUID del usuario
+   - NO crear columna `user_id` separada
+   - Incluir columna `rol TEXT DEFAULT 'usuario'` — valores: `'usuario'` | `'admin'`
+   - Asignar `rol = 'admin'` al usuario admin tras el seed
+4. Configurar RLS policies para cada tabla
+5. Crear seed data de prueba (5 productos por categoría, 3 servicios, 5 testimonios)
+6. Exportar tipos TypeScript desde el schema
 
 ### 🤖 NOVA — Autenticación y Usuario
 1. Configurar Supabase Auth (email + password)
@@ -48,12 +53,29 @@ Construir en este orden:
 6. CartDrawer: sidebar deslizable con productos, cantidades +/-, eliminar, total MXN
 7. /carrito: Vista completa del carrito + resumen + ir a checkout
 8. /checkout: Stripe Elements para pago, dirección de envío, resumen
+   - **⚠️ CartContext:** exponer `cartLoaded: boolean` (true cuando localStorage terminó de cargar)
+     Checkout usa `useEffect` para redirigir solo cuando `cartLoaded === true && items.length === 0`
+     NUNCA llamar `router.push()` directamente en render — causa "Cannot update while rendering"
+   - **⚠️ Precargar perfil:** al montar, fetch `profiles.eq('id', user.id)` y prellenar form
+     Mostrar datos en modo lectura. Botón "✏ Editar" por card (contacto y dirección independientes)
+     Si datos incompletos en perfil, abrir modo edición automáticamente
+   - **⚠️ TypeScript:** siempre `React.FormEvent<HTMLFormElement>` — `React.FormEvent` sin tipo está deprecated
+   - **⚠️ Crear órdenes:** NUNCA desde browser client — RLS bloquea con 403 silencioso
+     Crear `/api/orders/create/route.ts` con `adminSupabase` (service role) para insertar ordenes + orden_items
+   - **⚠️ Race condition clearCart:** usar `const paymentSucceeded = useRef(false)`
+     En useEffect redirect: `&& !paymentSucceeded.current` para no ir a /tienda tras pago exitoso
+     Orden al pagar: `paymentSucceeded.current = true` → `clearCart()` → `router.push('/perfil')`
+   - **⚠️ Stripe appearance:** usar hex directo, NUNCA `var(--css-vars)` en `appearance.variables`
 
 **Panel Admin (/admin):**
 9. /admin/dashboard: Stats (ventas, pedidos, usuarios, productos), gráficas
 10. /admin/productos: Tabla con búsqueda, filtros, CRUD completo
     - Campos: imagen, título, descripción, precio MXN, descuento %, stock,
       categorías (perro/gato/roedor), activo/inactivo, más vendido
+    - **⚠️ OBLIGATORIO:** Crear `actions.ts` con `'use server'` para create/update/delete.
+      Cada acción llama `ensureAdmin()` + `createAdminClient()`. Ver patrón en CLAUDE.md.
+    - `ensureAdmin()` debe usar `.eq('id', user.id)` — NO `.eq('user_id', user.id)`
+    - El componente page.tsx importa y llama estas server actions. NUNCA mutaciones con browser client.
 11. /admin/pedidos: Lista pedidos, filtrar por status, actualizar status + delivery
 12. /admin/servicios: Calendario mensual (8am-7pm Lun-Dom) con citas agendadas
     - Clic en cita: ver detalle, cambiar status, agregar notas
@@ -65,6 +87,9 @@ Construir en este orden:
 - Usar colores del $ARGUMENTS (el prompt del usuario)
 - Siempre implementar dark mode con next-themes (class strategy)
 - Variables CSS en globals.css para fácil personalización
+- **Admin Sidebar:** incluir toggle dark mode animado (SVG sol/luna) con `useTheme()` de next-themes
+  Colocarlo encima de "Ver sitio público". Usar `useEffect` + `useState(false)` para `mounted`
+  y evitar hydration mismatch. Texto dinámico: "Modo claro" / "Modo oscuro"
 
 ### 🤖 GUARDIAN — Testing con Playwright
 Ejecutar después de cada sección de PIXEL:

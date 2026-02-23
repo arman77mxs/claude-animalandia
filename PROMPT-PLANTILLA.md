@@ -9,6 +9,11 @@ Región: México
 Moneda: MXN (pesos mexicanos)
 Slogan: [Tu mascota merece lo mejor]
 
+## GLOBALS.CSS — REGLA CRÍTICA
+Al crear globals.css: NO agregar `* { padding: 0; margin: 0 }` ni ningún reset CSS fuera de @layer.
+Tailwind v4 preflight ya lo maneja. Hacerlo rompe todas las utilities (pt-8, ml-64, p-8, etc.) en Turbopack.
+Ver sección "globals.css — Reglas Críticas" en CLAUDE.md para detalles completos.
+
 ## IDENTIDAD VISUAL
 Modo claro:
   - Fondo: #FFFFFF
@@ -45,11 +50,23 @@ Modo oscuro:
 - Drawer lateral deslizable con productos
 - Cambiar cantidad (+/-), eliminar producto
 - Total en MXN, botón ir a checkout
+- ⚠️ CartContext debe exponer `cartLoaded: boolean` — se pone `true` al terminar de leer localStorage
+  Páginas que usen el carrito esperan `cartLoaded` antes de redirigir (evita race condition)
 
 ### Checkout:
 - Stripe Elements en modo TEST
 - Resumen del pedido, dirección de envío, confirmar pago
 - Email de confirmación (via Supabase Edge Functions)
+- ⚠️ Precargar datos del perfil: `supabase.from('profiles').select('*').eq('id', user.id)`
+  Mostrar en modo lectura (ReadField) con botón "✏ Editar" por card
+  Card Datos de Contacto y Card Dirección de Envío son independientes
+  Si faltan datos en perfil, abrir edición automáticamente al cargar
+- ⚠️ Crear órdenes server-side: POST `/api/orders/create` con adminSupabase (service role)
+  NUNCA insertar en `ordenes`/`orden_items` desde browser client — RLS lo bloquea (403 silencioso)
+- ⚠️ Race condition clearCart: usar `useRef paymentSucceeded` para evitar redirect a /tienda
+  Orden: `paymentSucceeded.current = true` → `clearCart()` → `router.push('/perfil')`
+- ⚠️ Stripe appearance: NUNCA usar `var(--css-var)` en `appearance.variables` — Stripe no las resuelve
+  Usar colores hex directos: `colorPrimary: '#A8D8B9'`
 
 ### Perfil de Usuario:
 - Ver/editar datos personales
@@ -74,6 +91,9 @@ Modo oscuro:
    - Categorías: para perro / para gato / para roedor (pueden ser múltiples)
    - Stock actual, activo/inactivo, badge 'Más vendido'
    - Barra de búsqueda por nombre de producto
+   - ⚠️ TODO el CRUD (crear/editar/eliminar) debe ir por Server Actions en actions.ts
+     usando createAdminClient() con service role. El cliente browser falla por RLS.
+   - ⚠️ En ensureAdmin(): usar .eq('id', user.id) — profiles.id ES el user UUID, NO hay user_id
 
 3. Pedidos:
    - Lista con filtros: pendiente / preparando / enviado / entregado

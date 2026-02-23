@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Producto } from '@/types'
 import { formatCurrency } from '@/lib/utils'
-import Image from 'next/image'
 import { Plus, Search, Edit3, Trash2, ToggleLeft, ToggleRight } from 'lucide-react'
 import { toast } from '@/components/ui/toaster'
 import ProductoModal from '@/components/admin/ProductoModal'
+import { deleteProducto } from './actions'
 
 export default function AdminProductos() {
   const [productos, setProductos] = useState<Producto[]>([])
@@ -38,8 +38,8 @@ export default function AdminProductos() {
 
   const handleDelete = async (id: string) => {
     if (!confirm('¿Eliminar este producto?')) return
-    const supabase = createClient()
-    await supabase.from('productos').delete().eq('id', id)
+    const result = await deleteProducto(id)
+    if (result.error) { toast(result.error, 'error'); return }
     toast('Producto eliminado', 'info')
     fetchProductos()
   }
@@ -82,8 +82,9 @@ export default function AdminProductos() {
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
                     {p.imagen_url && (
-                      <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
-                        <Image src={p.imagen_url} alt={p.titulo} fill className="object-cover" />
+                      <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-[var(--muted)]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={p.imagen_url} alt={p.titulo} className="w-full h-full object-cover" />
                       </div>
                     )}
                     <div>
@@ -127,7 +128,7 @@ export default function AdminProductos() {
         </table>
       </div>
 
-      {modalOpen && <ProductoModal producto={editing} onClose={() => setModalOpen(false)} onSave={() => { setModalOpen(false); fetchProductos() }} />}
+      {modalOpen && <ProductoModal producto={editing} onClose={() => setModalOpen(false)} onSave={() => { setModalOpen(false); setSearch(''); fetchProductos() }} />}
     </div>
   )
 }

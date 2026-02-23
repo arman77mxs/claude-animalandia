@@ -110,5 +110,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   All 6 background agents from the original build have now reported back. The project is
   complete and live at https://template-2-claude-animalandia.vercel.app
 
+### Usuario administrador
+- **Email:** `admin@miapp.com`
+- El rol `admin` se asigna automáticamente a este usuario:
+  - Si ya existe en Supabase: la migración `20260222100000_set_admin_user.sql` actualiza su perfil.
+  - Si se registra después: un trigger asigna `rol = 'admin'` al crear su perfil.
+- Si el proyecto ya estaba desplegado y ese usuario sigue sin ser admin, en Supabase → SQL Editor ejecuta:
+  ```sql
+  UPDATE profiles SET rol = 'admin' WHERE user_id IN (SELECT id FROM auth.users WHERE email = 'admin@miapp.com');
+  ```
+- Panel admin: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
+
 ### Urls:
 http://localhost:3000/admin/login

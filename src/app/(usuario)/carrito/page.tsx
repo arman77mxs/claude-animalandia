@@ -10,7 +10,7 @@ export default function CarritoPage() {
   const items = state.items
 
   if (items.length === 0) return (
-    <div className="pt-24 pb-20 min-h-screen flex flex-col items-center justify-center px-4">
+    <div className="pt-8 pb-20 min-h-screen flex flex-col items-center justify-center px-4">
       <ShoppingBag className="w-20 h-20 mb-6 opacity-20" />
       <h1 className="text-3xl font-black mb-3">Tu carrito está vacío</h1>
       <p className="mb-8" style={{ color: 'var(--muted-foreground)' }}>Agrega productos desde nuestra tienda</p>
@@ -22,7 +22,7 @@ export default function CarritoPage() {
   )
 
   return (
-    <div className="pt-24 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-8 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-black mb-8">Mi <span style={{ color: 'var(--primary)' }}>Carrito</span></h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">

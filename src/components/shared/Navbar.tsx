@@ -16,7 +16,7 @@ const NAV_LINKS = [
   { href: '/contacto', label: 'Contacto' },
 ]
 
-const INNER_PAGES = ['/tienda', '/servicios', '/nosotros', '/contacto']
+const INNER_PAGES = ['/tienda', '/servicios', '/nosotros', '/contacto', '/perfil', '/carrito', '/checkout', '/agendar']
 
 export default function Navbar() {
   const pathname = usePathname()
