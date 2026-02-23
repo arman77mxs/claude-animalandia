@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
+import { AnimatedIcon } from '../shared/AnimatedIcon'
 
 export default function HeroSection() {
   return (
@@ -70,9 +71,9 @@ export default function HeroSection() {
             />
           </div>
           {/* Floating cards */}
-          <div className="absolute top-0 right-0 p-4 rounded-2xl shadow-xl text-sm font-medium"
+          <div className="absolute top-0 right-0 p-4 rounded-2xl shadow-xl text-sm font-medium flex items-center gap-2"
             style={{ background: 'var(--background)', border: '1px solid var(--border)' }}>
-            🐾 +200 productos disponibles
+            <AnimatedIcon name="pata" size={20} color="var(--primary)" /> +200 productos disponibles
           </div>
           <div className="absolute bottom-8 left-0 p-4 rounded-2xl shadow-xl text-sm font-medium"
             style={{ background: 'var(--background)', border: '1px solid var(--border)' }}>

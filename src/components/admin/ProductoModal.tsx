@@ -1,9 +1,10 @@
 'use client'
 import { useState } from 'react'
 import { Producto } from '@/types'
-import { X } from 'lucide-react'
+import { X, Star, Check } from 'lucide-react'
 import { toast } from '@/components/ui/toaster'
 import { createProducto, updateProducto } from '@/app/(admin)/admin/productos/actions'
+import { AnimatedIcon } from '../shared/AnimatedIcon'
 
 interface Props {
   producto: Producto | null
@@ -103,18 +104,20 @@ export default function ProductoModal({ producto, onClose, onSave }: Props) {
             <label className="block text-sm font-medium mb-3">Categorías y opciones</label>
             <div className="grid grid-cols-2 gap-2">
               {[
-                ['para_perro', '🐕 Perros'],
-                ['para_gato', '🐱 Gatos'],
-                ['para_roedor', '🐹 Roedores'],
-                ['mas_vendido', '⭐ Más vendido'],
-                ['activo', '✅ Activo'],
-              ].map(([field, label]) => (
-                <label key={field} className="flex items-center gap-2 cursor-pointer p-2 rounded-lg">
+                { field: 'para_perro', label: 'Perros', icon: <AnimatedIcon name="perro" size={16} color="var(--primary)" /> },
+                { field: 'para_gato', label: 'Gatos', icon: <AnimatedIcon name="gato" size={16} color="var(--secondary)" /> },
+                { field: 'para_roedor', label: 'Roedores', icon: <AnimatedIcon name="roedor" size={16} color="var(--accent)" /> },
+                { field: 'mas_vendido', label: 'Destacado', icon: <Star className="w-4 h-4 fill-current" style={{ color: 'var(--secondary)' }} /> },
+                { field: 'activo', label: 'Activo', icon: <Check className="w-4 h-4" style={{ color: 'var(--primary)' }} /> },
+              ].map(({ field, label, icon }) => (
+                <label key={field} className="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-[var(--muted)] transition-colors border border-[var(--border)]">
                   <input type="checkbox"
                     checked={form[field as keyof typeof form] as boolean}
                     onChange={e => setForm(p => ({ ...p, [field]: e.target.checked }))}
                     className="w-4 h-4 rounded" />
-                  <span className="text-sm">{label}</span>
+                  <span className="flex items-center gap-1.5 text-sm font-medium">
+                    {icon} {label}
+                  </span>
                 </label>
               ))}
             </div>

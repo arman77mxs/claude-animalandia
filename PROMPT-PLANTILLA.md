@@ -70,7 +70,10 @@ Modo oscuro:
 
 ### Perfil de Usuario:
 - Ver/editar datos personales
-- Historial de pedidos con status
+- Historial de pedidos: cada pedido muestra ID, status badge, fecha, total, barra de progreso (Preparando→Enviado→Entregado) y lista de productos (imagen, nombre, cantidad, precio)
+- ⚠️ RLS obligatorio en `orden_items`: sin `user_own_order_items` policy el join devuelve arrays vacíos
+- ⚠️ Admin pedidos: actualizar status con server action `updateOrdenStatus` en actions.ts (NO browser client)
+- ⚠️ NO usar join `profiles!ordenes_user_id_fkey` en query de pedidos — FK no existe → PGRST200
 - Mis citas agendadas
 - Sección para agendar nueva cita
 

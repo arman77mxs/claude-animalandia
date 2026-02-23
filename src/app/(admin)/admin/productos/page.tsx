@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Producto } from '@/types'
 import { formatCurrency } from '@/lib/utils'
-import { Plus, Search, Edit3, Trash2, ToggleLeft, ToggleRight } from 'lucide-react'
+import { Plus, Search, Edit3, Trash2, ToggleLeft, ToggleRight, Star } from 'lucide-react'
 import { toast } from '@/components/ui/toaster'
 import ProductoModal from '@/components/admin/ProductoModal'
+import { AnimatedIcon } from '@/components/shared/AnimatedIcon'
 import { deleteProducto } from './actions'
 
 export default function AdminProductos() {
@@ -89,7 +90,11 @@ export default function AdminProductos() {
                     )}
                     <div>
                       <p className="font-medium truncate max-w-[200px]">{p.titulo}</p>
-                      {p.mas_vendido && <span className="text-xs" style={{ color: 'var(--secondary)' }}>⭐ Más vendido</span>}
+                      {p.mas_vendido && (
+                        <span className="text-[10px] font-bold uppercase flex items-center gap-1" style={{ color: 'var(--secondary)' }}>
+                          <Star className="w-2.5 h-2.5 fill-current" /> Destacado
+                        </span>
+                      )}
                     </div>
                   </div>
                 </td>
@@ -101,10 +106,10 @@ export default function AdminProductos() {
                   <span className={`font-medium ${p.stock <= 5 ? 'text-red-500' : ''}`}>{p.stock}</span>
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex gap-1">
-                    {p.para_perro && <span>🐕</span>}
-                    {p.para_gato && <span>🐱</span>}
-                    {p.para_roedor && <span>🐹</span>}
+                  <div className="flex gap-2">
+                    {p.para_perro && <AnimatedIcon name="perro" size={16} color="var(--primary)" />}
+                    {p.para_gato && <AnimatedIcon name="gato" size={16} color="var(--secondary)" />}
+                    {p.para_roedor && <AnimatedIcon name="roedor" size={16} color="var(--accent)" />}
                   </div>
                 </td>
                 <td className="px-4 py-3">

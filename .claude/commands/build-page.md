@@ -24,6 +24,9 @@ AGENT_PID=$!
    - Incluir columna `rol TEXT DEFAULT 'usuario'` — valores: `'usuario'` | `'admin'`
    - Asignar `rol = 'admin'` al usuario admin tras el seed
 4. Configurar RLS policies para cada tabla
+   - **⚠️ `ordenes`:** policy SELECT para `user_id = auth.uid()` + policy ALL para admins
+   - **⚠️ `orden_items`:** policy SELECT para "EXISTS ordenes WHERE user_id = auth.uid()" + policy ALL para admins
+   - Sin estas policies, el join `orden_items(*)` devuelve arrays vacíos silenciosamente
 5. Crear seed data de prueba (5 productos por categoría, 3 servicios, 5 testimonios)
 6. Exportar tipos TypeScript desde el schema
 
@@ -77,6 +80,11 @@ Construir en este orden:
     - `ensureAdmin()` debe usar `.eq('id', user.id)` — NO `.eq('user_id', user.id)`
     - El componente page.tsx importa y llama estas server actions. NUNCA mutaciones con browser client.
 11. /admin/pedidos: Lista pedidos, filtrar por status, actualizar status + delivery
+    - **⚠️ OBLIGATORIO:** Crear `actions.ts` con `updateOrdenStatus` (server action + `createAdminClient()`)
+    - Query: `ordenes.select('*, orden_items(id, cantidad, precio_unitario, productos(titulo, imagen_url))')`
+    - **⚠️ NO** usar join `profiles!ordenes_user_id_fkey` — FK no existe → PGRST200
+    - UI: botones de avance por paso (Preparando→Enviado→Entregado) + dropdown select para cualquier status
+    - Expandir/colapsar cada pedido para ver productos, dirección, Stripe ID
 12. /admin/servicios: Calendario mensual (8am-7pm Lun-Dom) con citas agendadas
     - Clic en cita: ver detalle, cambiar status, agregar notas
 13. /admin/testimonios: CRUD testimonios del carrusel "Voces que Inspiran"

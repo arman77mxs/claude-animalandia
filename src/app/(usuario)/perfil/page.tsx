@@ -8,6 +8,7 @@ import { toast } from '@/components/ui/toaster'
 import Link from 'next/link'
 import { formatCurrency, formatDate, STATUS_LABELS, STATUS_COLORS } from '@/lib/utils'
 import { cn } from '@/lib/utils'
+import { AnimatedIcon } from '@/components/shared/AnimatedIcon'
 
 export default function PerfilPage() {
   const router = useRouter()
@@ -77,7 +78,7 @@ export default function PerfilPage() {
           <button key={String(tab)} onClick={() => setActiveTab(tab as typeof activeTab)}
             className={cn('flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors', activeTab === tab ? 'border-b-[var(--primary)]' : 'border-b-transparent')}
             style={{ color: activeTab === tab ? 'var(--primary)' : 'var(--muted-foreground)' }}>
-            {/* @ts-ignore */}
+            {/* @ts-expect-error Icon type mismatch */}
             <Icon className="w-4 h-4" /> {label}
           </button>
         ))}
@@ -134,8 +135,9 @@ export default function PerfilPage() {
             <div className="flex gap-2 flex-wrap">
               {(profile?.animales_casa || []).length > 0
                 ? (profile?.animales_casa || []).map(a => (
-                  <span key={a} className="px-3 py-1 rounded-full text-sm" style={{ background: 'color-mix(in srgb, var(--primary) 15%, transparent)', color: 'var(--primary)' }}>
-                    {a === 'perro' ? '🐕' : a === 'gato' ? '🐱' : a === 'roedor' ? '🐹' : '🐾'} {a}
+                  <span key={a} className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium" style={{ background: 'color-mix(in srgb, var(--primary) 15%, transparent)', color: 'var(--primary)' }}>
+                    <AnimatedIcon name={a} size={16} color="var(--primary)" />
+                    {a.charAt(0).toUpperCase() + a.slice(1)}
                   </span>
                 ))
                 : <span className="text-sm" style={{ color: 'var(--muted-foreground)' }}>No registrado</span>
@@ -161,20 +163,70 @@ export default function PerfilPage() {
               <Link href="/tienda" className="mt-4 inline-block px-6 py-2 rounded-xl text-sm font-semibold text-white"
                 style={{ background: 'var(--primary)' }}>Ver Tienda</Link>
             </div>
-          ) : ordenes.map(orden => (
-            <div key={orden.id} className="p-4 rounded-2xl" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
-              <div className="flex items-center justify-between mb-3">
-                <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>#{orden.id.slice(0, 8).toUpperCase()}</p>
-                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${STATUS_COLORS[orden.status]}`}>
-                  {STATUS_LABELS[orden.status]}
-                </span>
+          ) : ordenes.map(orden => {
+            // Status flow indicator
+            const STATUS_FLOW = ['preparando', 'enviado', 'entregado']
+            const currentStep = STATUS_FLOW.indexOf(orden.status)
+            const items = (orden as unknown as { orden_items?: { id: string; cantidad: number; precio_unitario: number; productos?: { titulo: string; imagen_url: string } | null }[] }).orden_items || []
+            return (
+              <div key={orden.id} className="rounded-2xl overflow-hidden" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+                {/* Order header */}
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center gap-2">
+                      <p className="font-mono font-bold text-sm">#{orden.id.slice(0, 8).toUpperCase()}</p>
+                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${STATUS_COLORS[orden.status]}`}>
+                        {STATUS_LABELS[orden.status]}
+                      </span>
+                    </div>
+                    <p className="font-black" style={{ color: 'var(--primary)' }}>{formatCurrency(orden.total_mxn)}</p>
+                  </div>
+                  <p className="text-xs mb-4" style={{ color: 'var(--muted-foreground)' }}>{formatDate(orden.created_at)}</p>
+
+                  {/* Status progress bar */}
+                  {!['cancelada', 'cancelado', 'pendiente'].includes(orden.status) && (
+                    <div className="flex items-center gap-1 mb-4">
+                      {STATUS_FLOW.map((s, i) => (
+                        <div key={s} className="flex items-center gap-1 flex-1">
+                          <div className="flex flex-col items-center flex-1">
+                            <div className="w-full h-1.5 rounded-full"
+                              style={{ background: i <= currentStep ? 'var(--primary)' : 'var(--border)' }} />
+                            <span className="text-xs mt-1" style={{ color: i <= currentStep ? 'var(--primary)' : 'var(--muted-foreground)', fontWeight: i === currentStep ? 700 : 400 }}>
+                              {STATUS_LABELS[s]}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Order items */}
+                {items.length > 0 && (
+                  <div className="border-t px-5 pb-5 pt-4" style={{ borderColor: 'var(--border)' }}>
+                    <p className="text-xs font-bold uppercase mb-3" style={{ color: 'var(--muted-foreground)', letterSpacing: '0.05em' }}>
+                      Productos ({items.length})
+                    </p>
+                    <div className="space-y-2">
+                      {items.map((item, idx) => (
+                        <div key={item.id || idx} className="flex items-center gap-3 p-3 rounded-xl" style={{ background: 'var(--background)' }}>
+                          {item.productos?.imagen_url && (
+                            <img src={item.productos.imagen_url} alt={item.productos.titulo}
+                              className="w-10 h-10 object-cover rounded-lg shrink-0" />
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium truncate">{item.productos?.titulo || 'Producto'}</p>
+                            <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>Cantidad: {item.cantidad}</p>
+                          </div>
+                          <p className="text-sm font-bold shrink-0">{formatCurrency(item.precio_unitario * item.cantidad)}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="flex justify-between items-center">
-                <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>{formatDate(orden.created_at)}</p>
-                <p className="font-bold" style={{ color: 'var(--primary)' }}>{formatCurrency(orden.total_mxn)}</p>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
 

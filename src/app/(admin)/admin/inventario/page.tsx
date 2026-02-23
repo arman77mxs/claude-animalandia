@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/client'
 import { Producto } from '@/types'
 import { Package } from 'lucide-react'
 import { toast } from '@/components/ui/toaster'
+import { AnimatedIcon } from '@/components/shared/AnimatedIcon'
 
 export default function AdminInventario() {
   const [productos, setProductos] = useState<Producto[]>([])
@@ -50,8 +51,12 @@ export default function AdminInventario() {
               : productos.map(p => (
               <tr key={p.id} className="border-t text-sm" style={{ borderColor: 'var(--border)' }}>
                 <td className="px-4 py-3">
-                  <p className="font-medium">{p.titulo}</p>
-                  <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>{[p.para_perro && '🐕', p.para_gato && '🐱', p.para_roedor && '🐹'].filter(Boolean).join(' ')}</p>
+                  <p className="font-medium mb-1">{p.titulo}</p>
+                  <div className="flex gap-1.5 opacity-60">
+                    {p.para_perro && <AnimatedIcon name="perro" size={14} color="var(--primary)" />}
+                    {p.para_gato && <AnimatedIcon name="gato" size={14} color="var(--secondary)" />}
+                    {p.para_roedor && <AnimatedIcon name="roedor" size={14} color="var(--accent)" />}
+                  </div>
                 </td>
                 <td className="px-4 py-3">
                   <span className={`text-2xl font-black ${p.stock <= 5 ? 'text-red-500' : p.stock <= 15 ? 'text-amber-500' : ''}`} style={{ color: p.stock > 15 ? 'var(--primary)' : undefined }}>{p.stock}</span>

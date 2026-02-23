@@ -1,11 +1,12 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { AnimatedIcon } from '@/components/shared/AnimatedIcon'
 
 const CATEGORIAS = [
-  { label: 'Perros', emoji: '🐕', query: 'perro', desc: 'Alimentos, juguetes y más', color: 'var(--primary)', bg: 'color-mix(in srgb, var(--primary) 15%, transparent)' },
-  { label: 'Gatos', emoji: '🐱', query: 'gato', desc: 'Todo para tu felino', color: 'var(--secondary)', bg: 'color-mix(in srgb, var(--secondary) 15%, transparent)' },
-  { label: 'Roedores', emoji: '🐹', query: 'roedor', desc: 'Conejos, hámsters y más', color: 'var(--accent)', bg: 'color-mix(in srgb, var(--accent) 15%, transparent)' },
+  { label: 'Perros', emoji: 'perro', query: 'perro', desc: 'Alimentos, juguetes y más', color: 'var(--primary)', bg: 'color-mix(in srgb, var(--primary) 15%, transparent)' },
+  { label: 'Gatos', emoji: 'gato', query: 'gato', desc: 'Todo para tu felino', color: 'var(--secondary)', bg: 'color-mix(in srgb, var(--secondary) 15%, transparent)' },
+  { label: 'Roedores', emoji: 'roedor', query: 'roedor', desc: 'Conejos, hámsters y más', color: 'var(--accent)', bg: 'color-mix(in srgb, var(--accent) 15%, transparent)' },
 ]
 
 export default function CategoriesSection() {
@@ -21,7 +22,9 @@ export default function CategoriesSection() {
             <Link href={`/tienda?categoria=${c.query}`}
               className="block p-8 rounded-2xl text-center transition-all hover:scale-105 hover:shadow-xl group"
               style={{ background: c.bg, border: `2px solid ${c.color}20` }}>
-              <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">{c.emoji}</div>
+              <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">
+                <AnimatedIcon name={c.emoji} size={64} color={c.color} />
+              </div>
               <h3 className="text-2xl font-black mb-2" style={{ color: c.color }}>{c.label}</h3>
               <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>{c.desc}</p>
             </Link>

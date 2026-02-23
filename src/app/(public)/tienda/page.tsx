@@ -6,8 +6,9 @@ import { Producto } from '@/types'
 import { formatCurrency, calculateDiscountedPrice } from '@/lib/utils'
 import { useCart } from '@/context/CartContext'
 import { toast } from '@/components/ui/toaster'
-import { Search, SlidersHorizontal, ShoppingCart, Tag } from 'lucide-react'
+import { Search, SlidersHorizontal, ShoppingCart, Tag, Star } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { AnimatedIcon } from '@/components/shared/AnimatedIcon'
 
 type Categoria = 'todos' | 'perro' | 'gato' | 'roedor'
 type SortOption = 'default' | 'precio_asc' | 'precio_desc' | 'nombre'
@@ -46,7 +47,7 @@ export default function TiendaPage() {
     addItem(p); toast(`${p.titulo} agregado`, 'success'); openCart()
   }
 
-  const CATS: [Categoria, string, string][] = [['todos','Todos','🐾'],['perro','Perros','🐕'],['gato','Gatos','🐱'],['roedor','Roedores','🐹']]
+  const CATS: [Categoria, string, string][] = [['todos','Todos','pata'],['perro','Perros','perro'],['gato','Gatos','gato'],['roedor','Roedores','roedor']]
 
   return (
     <div className="pt-8 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,15 +67,15 @@ export default function TiendaPage() {
         </div>
 
         <div className="flex gap-2">
-          {CATS.map(([val, label, emoji]) => (
+          {CATS.map(([val, label, iconName]) => (
             <button key={val} onClick={() => setCategoria(val)}
-              className="px-4 py-2 rounded-xl text-sm font-medium transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all"
               style={{
                 background: categoria === val ? 'var(--primary)' : 'var(--card)',
                 color: categoria === val ? 'var(--primary-foreground)' : 'var(--foreground)',
                 border: `1px solid ${categoria === val ? 'var(--primary)' : 'var(--border)'}`
               }}>
-              {emoji} {label}
+              <AnimatedIcon name={iconName} size={16} color={categoria === val ? 'white' : 'var(--primary)'} /> {label}
             </button>
           ))}
         </div>
@@ -104,7 +105,6 @@ export default function TiendaPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {filtered.map((p, i) => {
             const finalPrice = calculateDiscountedPrice(p.precio_mxn, p.descuento_pct)
-            const cats = [p.para_perro && '🐕', p.para_gato && '🐱', p.para_roedor && '🐹'].filter(Boolean)
             return (
               <motion.div key={p.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
                 className="rounded-2xl overflow-hidden group hover:shadow-xl transition-shadow"
@@ -118,12 +118,18 @@ export default function TiendaPage() {
                     </div>
                   )}
                   {p.mas_vendido && (
-                    <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-xs font-bold text-white"
-                      style={{ background: 'var(--secondary)' }}>⭐</div>
+                    <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-xs font-bold text-white flex items-center gap-1"
+                      style={{ background: 'var(--secondary)' }}>
+                      <Star className="w-3 h-3 fill-current" /> Destacado
+                    </div>
                   )}
                 </div>
                 <div className="p-4">
-                  <div className="flex gap-1 mb-2">{cats.map(c => <span key={String(c)} className="text-xs">{c}</span>)}</div>
+                  <div className="flex gap-2 mb-2">
+                    {p.para_perro && <AnimatedIcon name="perro" size={14} color="var(--primary)" />}
+                    {p.para_gato && <AnimatedIcon name="gato" size={14} color="var(--secondary)" />}
+                    {p.para_roedor && <AnimatedIcon name="roedor" size={14} color="var(--accent)" />}
+                  </div>
                   <h3 className="font-semibold text-sm mb-2 line-clamp-2">{p.titulo}</h3>
                   <div className="flex items-center gap-1 mb-3">
                     <span className="font-black" style={{ color: 'var(--primary)' }}>{formatCurrency(finalPrice)}</span>

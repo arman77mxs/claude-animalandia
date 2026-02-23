@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { PawPrint } from 'lucide-react'
 import { toast } from '@/components/ui/toaster'
+import { AnimatedIcon } from '@/components/shared/AnimatedIcon'
 
 const ESTADOS_MX = ['Ciudad de México', 'Jalisco', 'Nuevo León', 'Estado de México', 'Puebla', 'Guanajuato', 'Veracruz', 'Chihuahua', 'Oaxaca', 'Sonora', 'Otro']
 
@@ -157,7 +158,12 @@ export default function RegistroPage() {
                 <div>
                   <label className="block text-sm font-medium mb-3">¿Qué animales tienes en casa?</label>
                   <div className="grid grid-cols-2 gap-3">
-                    {[['🐕 Perro', 'perro'], ['🐱 Gato', 'gato'], ['🐹 Roedor', 'roedor'], ['🐾 Otro', 'otro']].map(([label, val]) => (
+                    {[
+                      { label: 'Perro', val: 'perro', icon: 'perro' },
+                      { label: 'Gato', val: 'gato', icon: 'gato' },
+                      { label: 'Roedor', val: 'roedor', icon: 'roedor' },
+                      { label: 'Otro', val: 'otro', icon: 'pata' }
+                    ].map(({ label, val, icon }) => (
                       <button type="button" key={val} onClick={() => toggleAnimal(val)}
                         className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium border-2 transition-all"
                         style={{
@@ -167,6 +173,7 @@ export default function RegistroPage() {
                         <span className={`w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 ${form.animales.includes(val) ? 'bg-[var(--primary)] border-[var(--primary)]' : 'border-[var(--border)]'}`}>
                           {form.animales.includes(val) && <span className="text-white text-xs">✓</span>}
                         </span>
+                        <AnimatedIcon name={icon} size={16} color={form.animales.includes(val) ? 'var(--primary)' : 'var(--muted-foreground)'} />
                         {label}
                       </button>
                     ))}

@@ -289,6 +289,90 @@ export async function deleteItem(id: string) {
 > de tablas admin. El `createAdminClient()` usa la `SERVICE_ROLE_KEY` que bypassa RLS.
 > El delete con el cliente browser **falla silenciosamente** sin lanzar error en UI.
 
+### RLS Policies Obligatorias para Órdenes
+
+Al crear las tablas `ordenes` y `orden_items`, ATLAS debe aplicar estas políticas RLS. Sin ellas:
+- Los usuarios no ven su historial de pedidos (join devuelve arrays vacíos)
+- El admin no puede actualizar el status de pedidos
+
+```sql
+-- ordenes: usuario ve solo las suyas
+CREATE POLICY "user_own_orders" ON ordenes FOR SELECT
+  USING (auth.uid() = user_id);
+
+-- ordenes: admin accede a todo
+CREATE POLICY "admin_all_orders" ON ordenes FOR ALL
+  USING (EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND rol = 'admin'));
+
+-- orden_items: usuario ve items de sus propias órdenes
+CREATE POLICY "user_own_order_items" ON orden_items FOR SELECT
+  USING (EXISTS (SELECT 1 FROM ordenes WHERE id = orden_id AND user_id = auth.uid()));
+
+-- orden_items: admin accede a todo
+CREATE POLICY "admin_all_order_items" ON orden_items FOR ALL
+  USING (EXISTS (SELECT 1 FROM ordenes o
+    JOIN profiles p ON p.id = auth.uid()
+    WHERE o.id = orden_id AND p.rol = 'admin'));
+```
+
+> **Por qué:** Supabase habilita RLS automáticamente. Sin políticas SELECT en `orden_items`,
+> la query `ordenes.select('*, orden_items(*, productos(*))')` devuelve `orden_items: []`
+> silenciosamente — sin error, solo datos vacíos.
+
+### Admin Pedidos — Server Action `updateOrdenStatus`
+
+```typescript
+// src/app/(admin)/admin/pedidos/actions.ts
+'use server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
+
+async function ensureAdmin() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return { error: 'No autenticado' }
+  const { data: profile } = await supabase.from('profiles').select('rol').eq('id', user.id).single()
+  if (profile?.rol !== 'admin') return { error: 'Sin permisos de administrador' }
+  return { userId: user.id }
+}
+
+export async function updateOrdenStatus(id: string, status: string) {
+  const check = await ensureAdmin()
+  if ('error' in check) return { error: check.error }
+  const admin = createAdminClient()
+  const { error } = await admin.from('ordenes').update({ status }).eq('id', id)
+  if (error) return { error: error.message }
+  return { ok: true }
+}
+```
+
+La página `/admin/pedidos/page.tsx` usa la query:
+```typescript
+supabase.from('ordenes')
+  .select('*, orden_items(id, cantidad, precio_unitario, productos(titulo, imagen_url))')
+  .order('created_at', { ascending: false })
+// ⚠️ NO añadir join a profiles con profiles!ordenes_user_id_fkey
+// ordenes.user_id → profiles.id no tiene FK definida → PGRST200 error
+```
+
+### Perfil Usuario — Tab Pedidos con Progress Bar e Items
+
+```typescript
+// STATUS_FLOW para progress bar (excluye pendiente):
+const STATUS_FLOW = ['preparando', 'enviado', 'entregado']
+const currentStep = STATUS_FLOW.indexOf(orden.status)
+
+// Items con tipo assertion (Supabase join anidado no está en el tipo base Orden):
+const items = (orden as unknown as {
+  orden_items?: { id: string; cantidad: number; precio_unitario: number;
+    productos?: { titulo: string; imagen_url: string } | null }[]
+}).orden_items || []
+
+// No mostrar progress bar para estados terminales/iniciales:
+if (!['cancelada', 'cancelado', 'pendiente'].includes(orden.status)) {
+  // renderizar progress bar
+}
+```
+
 ### Pagos — Stripe Elements (modo TEST)
 
 Flujo completo verificado y funcional:
@@ -458,6 +542,9 @@ await supabase.from('productos').delete().eq('id', id)  // no lanza error, pero 
 - Crear órdenes Stripe desde el browser client — siempre usar `/api/orders/create` con `adminSupabase` (service role)
 - Usar `var(--color)` CSS custom properties en Stripe `appearance.variables` — Stripe no las resuelve, usar hex
 - Llamar `clearCart()` antes de `router.push('/perfil')` sin un `useRef` para bloquear el redirect "carrito vacío → /tienda"
+- Omitir RLS policies en `orden_items` — sin ellas, el join de órdenes devuelve `orden_items: []` vacío silenciosamente
+- Usar join `profiles!ordenes_user_id_fkey` en query de pedidos — no existe FK entre ordenes y profiles → PGRST200
+- Actualizar status de pedido desde browser client — usar siempre server action `updateOrdenStatus` con `createAdminClient()`
 
 ---
 

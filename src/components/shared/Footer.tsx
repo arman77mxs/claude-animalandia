@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { PawPrint, MapPin, Phone, Mail, MessageCircle } from 'lucide-react'
+import { PawPrint, MapPin, Phone, Mail, MessageCircle, Heart } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -51,8 +51,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t py-4 text-center text-xs" style={{ borderColor: 'var(--border)', color: 'var(--muted-foreground)' }}>
-        © {new Date().getFullYear()} AnimaLandia. Todos los derechos reservados. Hecho con ❤️ en CDMX, México.
+      <div className="border-t py-4 text-center text-xs flex items-center justify-center gap-1" style={{ borderColor: 'var(--border)', color: 'var(--muted-foreground)' }}>
+        © {new Date().getFullYear()} AnimaLandia. Todos los derechos reservados. Hecho con <Heart className="w-3 h-3 fill-current text-red-500" /> en CDMX, México.
       </div>
     </footer>
   )
